@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JuaGuide — Herramientas y guías para Chile y Argentina</title>
+<style>
+:root{--bg:#fbfaf7;--card:#fff;--tx:#17202a;--mu:#5b6772;--ac:#0b6e4f;--ac2:#d9381e;--bd:#e4e0d6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10161b;--card:#18212a;--tx:#eef1f3;--mu:#9aa7b2;--ac:#3fc79a;--ac2:#ff7a5f;--bd:#2a3641;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10161b;--card:#18212a;--tx:#eef1f3;--mu:#9aa7b2;--ac:#3fc79a;--ac2:#ff7a5f;--bd:#2a3641;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:inherit}
+.w{max-width:1040px;margin:auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--bd);z-index:5}
+header .w{display:flex;align-items:center;gap:18px;height:60px}
+.logo{font-weight:800;font-size:1.25rem;text-decoration:none;letter-spacing:-.5px}
+.logo b{color:var(--ac)}
+nav{margin-left:auto;display:flex;gap:16px;align-items:center;font-size:.92rem}
+nav a{text-decoration:none;color:var(--mu)}nav a:hover{color:var(--ac)}
+.lang{border:1px solid var(--bd);border-radius:99px;padding:3px;display:flex}
+.lang button{border:0;background:none;color:var(--mu);font:600 .78rem inherit;padding:4px 10px;border-radius:99px;cursor:pointer}
+.lang button.on{background:var(--ac);color:#fff}
+.hero{padding:72px 0 56px}
+.kick{color:var(--ac2);font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
+h1{font-size:clamp(2rem,5.5vw,3.4rem);line-height:1.1;margin:.4em 0;letter-spacing:-1px;max-width:15em}
+.lead{color:var(--mu);max-width:38em;font-size:1.1rem}
+.btn{display:inline-block;background:var(--ac);color:#fff;padding:11px 20px;border-radius:10px;text-decoration:none;font-weight:600;margin:6px 8px 0 0;border:0;cursor:pointer;font-size:1rem}
+.btn.o{background:none;color:var(--tx);border:1px solid var(--bd)}
+h2{font-size:1.7rem;margin:0 0 6px;letter-spacing:-.5px}
+section{padding:40px 0}
+.sub{color:var(--mu);margin:0 0 22px}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;display:block;text-decoration:none;transition:.15s}
+.c:hover{transform:translateY(-2px);border-color:var(--ac)}
+.tag{font-size:.72rem;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:.08em}
+.c h3{margin:6px 0;font-size:1.1rem}.c p{margin:0 0 10px;color:var(--mu);font-size:.93rem}
+.c .m{font-size:.85rem;font-weight:600;color:var(--ac)}
+.hl{background:linear-gradient(135deg,var(--ac),#07503a);color:#fff;border-radius:18px;padding:32px;margin:20px 0}
+.hl h2,.hl p{color:#fff}.hl .btn{background:#fff;color:#07503a}
+.art{max-width:720px;padding:48px 0}
+.art h1{font-size:2.1rem}.art h3{margin:1.6em 0 .3em}
+.note{border-left:4px solid var(--ac2);background:var(--card);padding:12px 16px;border-radius:0 10px 10px 0;color:var(--mu);font-size:.92rem;margin:20px 0}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+form{display:flex;gap:8px;flex-wrap:wrap}
+input{padding:11px 14px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);flex:1;min-width:200px;font-size:1rem}
+footer{border-top:1px solid var(--bd);padding:28px 0 90px;color:var(--mu);font-size:.88rem}
+footer .w{display:flex;flex-wrap:wrap;gap:12px 22px;justify-content:space-between}
+footer a{text-decoration:none;margin-right:14px}
+#ck{position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));max-width:320px;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;box-shadow:0 8px 30px rgba(0,0,0,.18);z-index:20;font-size:.88rem}
+#ck p{margin:0 0 12px}#ck .btn{margin:0 6px 0 0;padding:8px 16px;font-size:.9rem}
+@media(max-width:640px){nav .hide{display:none}}
+</style>
+</head>
+<body>
+<header><div class="w">
+<a class="logo" href="#home">Jua<b>Guide</b></a>
+<nav><a class="hide" href="#tools" data-i="n1"></a><a class="hide" href="#guides" data-i="n2"></a><a class="hide" href="#igaming" data-i="n3"></a>
+<div class="lang"><button id="bes">ES</button><button id="ben">EN</button></div></nav>
+</div></header>
+<main id="app"></main>
+<footer><div class="w"><div id="fl"></div><div id="cp"></div></div></footer>
+<div id="ck" hidden><p id="ckt"></p><button class="btn" id="cka"></button><button class="btn o" id="ckr"></button></div>
+
+<script>
+var D={
+es:{n1:"Herramientas",n2:"Guías",n3:"iGaming",
+kick:"Hecho para Chile y Argentina",h1:"Herramientas y guías para crecer en línea desde Chile y Argentina.",
+lead:"Consejos claros sobre SaaS, ecommerce, marketing, afiliados y crecimiento digital, con contexto local y sin promesas infladas.",
+b1:"Ver herramientas recomendadas",b2:"Leer las guías",
+th:"Herramientas que vale la pena conocer",ts:"Plataformas consolidadas para investigar. Revisa siempre precios y condiciones vigentes en el sitio oficial del proveedor.",
+tools:[["Diseño","Canva","Diseño visual y creación de contenido para equipos, negocios y creadores.","https://www.canva.com/","Visitar Canva →"],["Ecommerce","Shopify","Plataforma para crear y operar una tienda en línea.","https://www.shopify.com/","Visitar Shopify →"],["Marketing","Semrush","Herramientas de búsqueda, contenido e investigación de la competencia.","https://www.semrush.com/","Visitar Semrush →"]],
+gh:"Guías para empezar",gs:"Artículos enfocados en decisiones prácticas.",read:"Leer artículo",
+hlh:"Aprende a monetizar con afiliados y descubre iGaming con criterio",hlp:"Dos guías nuevas: cómo funciona el marketing de afiliados y qué mirar antes de entrar al mundo de las apuestas en línea.",hlb:"Guía de afiliados",hlb2:"Guía iGaming",
+ph:"Principio simple",pt:"Elige herramientas para el trabajo, no porque una lista lo diga.",pp:"Usa las recomendaciones como punto de partida y verifica los detalles vigentes con el proveedor.",
+nh:"Boletín (demo)",np:"Este formulario no envía correos hasta conectar un proveedor.",nem:"Tu correo",ns:"Suscribirme",
+copy:"© 2026 JuaGuide. Contenido editorial para Chile y Argentina.",fl:["Privacidad","Divulgación de afiliados","Cookies"],cs:"Configuración de cookies",
+ckt:"Usamos cookies para que el sitio funcione y recordar tus preferencias. Puedes aceptar o rechazar las opcionales.",acc:"Aceptar",rej:"Rechazar",
+back:"← Volver al inicio",min:"min",
+art:{
+saas:["SaaS","Cómo elegir software sin pagar de más","Compara funciones, precios y costos de cambio.",6,[["Define el problema primero","Escribe qué proceso quieres resolver antes de mirar herramientas. Así evitas pagar por funciones que no usarás."],["Compara con criterio","Revisa funciones, límites del plan gratuito, soporte y si cobran en dólares: en Chile y Argentina el tipo de cambio puede encarecer mucho una suscripción."],["Piensa en la salida","Verifica si puedes exportar tus datos. Cambiar de herramienta tiene un costo que conviene conocer desde el inicio."]]],
+audience:["Marketing","Un punto de partida práctico para crecer una audiencia","Construye una rutina sostenible de contenido y distribución.",7,[["Elige un canal principal","Es mejor dominar un canal (Instagram, YouTube, un blog) que estar en cinco a medias."],["Publica con constancia","Una frecuencia realista, mantenida por meses, vale más que una semana intensa."],["Mide y ajusta","Revisa qué contenidos funcionan y repite el formato. Los resultados llegan con el tiempo, no de un día para otro."]]],
+store:["Ecommerce","Qué considerar antes de lanzar una tienda en línea","Productos, pagos, logística y operación.",8,[["Producto y margen","Calcula costos, envío e impuestos antes de fijar precios. Un buen margen sostiene el negocio."],["Medios de pago","Revisa qué pasarelas operan en tu país y sus comisiones: en Chile es común Webpay; en Argentina, Mercado Pago."],["Logística","Define tiempos y costos de despacho y tu política de devoluciones."]]],
+afil:["Afiliados","Marketing de afiliados: cómo empezar con los pies en la tierra","Cómo funcionan las comisiones y qué evitar.",7,[["Qué es","Recomiendas un producto o servicio con un enlace único y recibes una comisión si alguien compra o se registra a través de él."],["Cómo elegir programas","Prioriza productos que usarías tú mismo, comisiones claras, plazos de pago transparentes y cookies de seguimiento razonables."],["Transparencia","Avisa siempre que tus enlaces son de afiliado. Es honesto con tu audiencia y, en muchos casos, un requisito de las plataformas."],["Expectativas realistas","Los ingresos por afiliación dependen de tener audiencia que confíe en ti. No existe el dinero rápido."]]],
+igam:["iGaming","iGaming: guía responsable antes de entrar al mundo de las apuestas en línea","Qué mirar, qué evitar y cómo jugar con límites.",8,[["Primero, la legalidad","La regulación varía: en Argentina las apuestas en línea se regulan por provincia y en Chile el marco legal está en discusión. Infórmate sobre lo vigente en tu zona y usa solo operadores con licencia verificable."],["Qué revisar en un operador","Licencia y regulador, condiciones de bonos (requisitos de apuesta), métodos de retiro, tiempos de pago y atención al cliente."],["Desconfía de las promesas","Ningún sistema garantiza ganancias. Las apuestas son entretenimiento con riesgo de perder dinero."],["Juega con límites","Fija un presupuesto que puedas perder, define tiempo máximo y nunca persigas pérdidas."]]]},
+ig_note:"Solo mayores de 18 años. Jugar puede generar adicción. Si sientes que pierdes el control, busca ayuda profesional.",
+ig_more:"Seguir leyendo",ig_aff:"Cómo ganar como afiliado de iGaming →",
+leg:{privacy:["Privacidad","Esta es una versión estática. No recopilamos datos personales salvo que conectes un proveedor de correo o analítica. Las preferencias de cookies se guardan solo en tu navegador."],affiliate:["Divulgación de afiliados","Algunos enlaces pueden ser de afiliado: si compras o te registras, podríamos recibir una comisión sin costo extra para ti. Esto no condiciona nuestras opiniones."],cookies:["Política de cookies","Usamos almacenamiento del navegador para recordar tu idioma y tu elección de cookies. No hay cookies de analítica ni marketing activas."]}},
+en:{n1:"Tools",n2:"Guides",n3:"iGaming",
+kick:"Built for Chile and Argentina",h1:"Practical tools and guides for building online from Chile and Argentina.",
+lead:"Straightforward advice on SaaS, ecommerce, marketing, affiliates and digital growth, with local context and no inflated promises.",
+b1:"Explore recommended tools",b2:"Read the guides",
+th:"Tools worth knowing",ts:"Established platforms to research. Always check current pricing and terms on the provider’s official site.",
+tools:[["Design","Canva","Visual design and content creation for teams, businesses and creators.","https://www.canva.com/","Visit Canva →"],["Ecommerce","Shopify","A platform for building and operating an online store.","https://www.shopify.com/","Visit Shopify →"],["Marketing","Semrush","Search, content and competitive research tools for marketers.","https://www.semrush.com/","Visit Semrush →"]],
+gh:"Guides for getting started",gs:"Focused articles built around practical decisions.",read:"Read article",
+hlh:"Learn to earn with affiliates and approach iGaming with care",hlp:"Two new guides: how affiliate marketing works and what to check before entering online betting.",hlb:"Affiliate guide",hlb2:"iGaming guide",
+ph:"Simple principle",pt:"Choose tools for the job, not because a list told you to.",pp:"Use recommendations as a research starting point, then verify current details with the provider.",
+nh:"Newsletter (demo)",np:"This form does not send email until a provider is connected.",nem:"Your email",ns:"Subscribe",
+copy:"© 2026 JuaGuide. Editorial content for Chile and Argentina.",fl:["Privacy","Affiliate Disclosure","Cookies"],cs:"Cookie Settings",
+ckt:"We use cookies to keep the site working and remember your preferences. You can accept or reject the optional ones.",acc:"Accept",rej:"Reject",
+back:"← Back to home",min:"min",
+art:{
+saas:["SaaS","How to choose software without overbuying","Compare features, pricing and switching costs.",6,[["Define the problem first","Write down the process you want to solve before looking at tools, so you don’t pay for features you won’t use."],["Compare carefully","Check features, free-plan limits, support and whether billing is in USD: in Chile and Argentina exchange rates can make a subscription much pricier."],["Plan the exit","Check that you can export your data. Switching tools has a cost worth knowing upfront."]]],
+audience:["Marketing","A practical starting point for growing an audience","Build a sustainable content and distribution routine.",7,[["Pick one main channel","Mastering one channel (Instagram, YouTube, a blog) beats being half-present on five."],["Publish consistently","A realistic cadence kept up for months beats one intense week."],["Measure and adjust","See what works and repeat the format. Results take time, not days."]]],
+store:["Ecommerce","What to consider before launching an online store","Products, payments, fulfilment and operations.",8,[["Product and margin","Work out costs, shipping and taxes before setting prices."],["Payment methods","Check which gateways operate in your country and their fees: Webpay is common in Chile, Mercado Pago in Argentina."],["Fulfilment","Define delivery times, costs and your returns policy."]]],
+afil:["Affiliates","Affiliate marketing: a grounded way to start","How commissions work and what to avoid.",7,[["What it is","You recommend a product or service with a unique link and earn a commission when someone buys or signs up through it."],["Choosing programs","Favour products you’d use yourself, clear commissions, transparent payout schedules and reasonable tracking cookies."],["Transparency","Always disclose affiliate links. It’s honest with your audience and often required by platforms."],["Realistic expectations","Affiliate income depends on an audience that trusts you. There is no quick money."]]],
+igam:["iGaming","iGaming: a responsible guide before entering online betting","What to check, what to avoid and how to play with limits.",8,[["Legality first","Rules vary: in Argentina online betting is regulated by province, and in Chile the legal framework is under discussion. Check what applies where you live and use only verifiably licensed operators."],["What to check in an operator","Licence and regulator, bonus terms (wagering requirements), withdrawal methods, payout times and customer support."],["Distrust promises","No system guarantees winnings. Betting is entertainment with a real risk of losing money."],["Play within limits","Set a budget you can afford to lose, a time cap, and never chase losses."]]]},
+ig_note:"18+ only. Gambling can be addictive. If you feel you are losing control, seek professional help.",
+ig_more:"Keep reading",ig_aff:"How to earn as an iGaming affiliate →",
+leg:{privacy:["Privacy","This is a static version. We collect no personal data unless you connect an email or analytics provider. Cookie preferences are stored only in your browser."],affiliate:["Affiliate Disclosure","Some links may be affiliate links: if you buy or sign up we may earn a commission at no extra cost to you. This does not shape our opinions."],cookies:["Cookie Policy","We use browser storage to remember your language and cookie choice. No analytics or marketing cookies are active."]}}
+};
+var L="es",app=document.getElementById("app");
+function sg(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function ss(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function esc(s){return s}
+function card(k,t){var a=t.art[k];return '<a class="c" href="#'+({saas:"saas",audience:"audiencia",store:"tienda",afil:"afiliados",igam:"igaming"}[k])+'"><span class="tag">'+a[0]+'</span><h3>'+a[1]+'</h3><p>'+a[2]+'</p><span class="m">'+t.read+' · '+a[3]+' '+t.min+'</span></a>'}
+var map={saas:"saas",audiencia:"audience",tienda:"store",afiliados:"afil",igaming:"igam"};
+function home(t){
+var tl=t.tools.map(function(x){return '<div class="c"><span class="tag">'+x[0]+'</span><h3>'+x[1]+'</h3><p>'+x[2]+'</p><a class="m" href="'+x[3]+'" target="_blank" rel="noopener sponsored">'+x[4]+'</a></div>'}).join("");
+return '<div class="w"><div class="hero"><span class="kick">'+t.kick+'</span><h1>'+t.h1+'</h1><p class="lead">'+t.lead+'</p><a class="btn" href="#tools">'+t.b1+'</a><a class="btn o" href="#guides">'+t.b2+'</a></div>'+
+'<section id="tools"><h2>'+t.th+'</h2><p class="sub">'+t.ts+'</p><div class="g">'+tl+'</div></section>'+
+'<section id="guides"><h2>'+t.gh+'</h2><p class="sub">'+t.gs+'</p><div class="g">'+["saas","audience","store","afil","igam"].map(function(k){return card(k,t)}).join("")+'</div></section>'+
+'<div class="hl"><h2>'+t.hlh+'</h2><p>'+t.hlp+'</p><a class="btn" href="#afiliados">'+t.hlb+'</a><a class="btn" href="#igaming">'+t.hlb2+'</a></div>'+
+'<section><span class="kick">'+t.ph+'</span><h2>'+t.pt+'</h2><p class="sub">'+t.pp+'</p></section>'+
+'<section><h2>'+t.nh+'</h2><p class="sub">'+t.np+'</p><form onsubmit="return false"><input type="email" placeholder="'+t.nem+'"><button class="btn" type="button">'+t.ns+'</button></form></section></div>'}
+function article(k,t){var a=t.art[k],b=a[4].map(function(s){return '<h3>'+s[0]+'</h3><p>'+s[1]+'</p>'}).join("");
+var extra="";
+if(k==="igam")extra='<div class="note">'+t.ig_note+'</div><div class="row"><a class="btn" href="#afiliados">'+t.ig_aff+'</a></div>';
+if(k==="afil")extra='<div class="row"><a class="btn" href="#igaming">'+t.ig_more+': iGaming →</a></div>';
+return '<div class="w art"><a href="#home">'+t.back+'</a><p class="kick" style="margin-top:24px">'+a[0]+' · '+a[3]+' '+t.min+'</p><h1>'+a[1]+'</h1><p class="lead">'+a[2]+'</p>'+b+extra+'</div>'}
+function legal(k,t){var l=t.leg[k];return '<div class="w art"><a href="#home">'+t.back+'</a><h1>'+l[0]+'</h1><p>'+l[1]+'</p></div>'}
+function render(){
+var t=D[L],h=(location.hash||"#home").slice(1);
+document.documentElement.lang=L;
+document.title="JuaGuide — "+(L==="es"?"Herramientas y guías para Chile y Argentina":"Tools and guides for Chile and Argentina");
+document.querySelectorAll("[data-i]").forEach(function(e){e.textContent=t[e.getAttribute("data-i")]});
+document.getElementById("bes").className=L==="es"?"on":"";document.getElementById("ben").className=L==="en"?"on":"";
+var v;
+if(map[h])v=article(map[h],t);else if(h==="privacidad"||h==="privacy")v=legal("privacy",t);else if(h==="afiliados-info")v=legal("affiliate",t);else if(h==="cookies")v=legal("cookies",t);else v=home(t);
+app.innerHTML=v;
+document.getElementById("fl").innerHTML='<a href="#privacidad">'+t.fl[0]+'</a><a href="#afiliados-info">'+t.fl[1]+'</a><a href="#cookies">'+t.fl[2]+'</a><a href="#" id="cs">'+t.cs+'</a><div style="margin-top:8px">'+t.copy+'</div>';
+document.getElementById("cs").onclick=function(e){e.preventDefault();ck.hidden=false};
+document.getElementById("ckt").textContent=t.ckt;document.getElementById("cka").textContent=t.acc;document.getElementById("ckr").textContent=t.rej;
+var id=["tools","guides"].indexOf(h)>-1?h:null;
+if(id){var el=document.getElementById(id);if(el)el.scrollIntoView()}else if(!id)window.scrollTo(0,0)}
+var ck=document.getElementById("ck");
+function setL(l){L=l;ss("jg_lang",l);render()}
+document.getElementById("bes").onclick=function(){setL("es")};
+document.getElementById("ben").onclick=function(){setL("en")};
+function choose(v){ss("jg_cookies",v);ck.hidden=true}
+document.getElementById("cka").onclick=function(){choose("accepted")};
+document.getElementById("ckr").onclick=function(){choose("rejected")};
+var s=sg("jg_lang");if(s==="en"||s==="es")L=s;
+if(!sg("jg_cookies"))ck.hidden=false;
+window.addEventListener("hashchange",render);
+render();
+</script>
+</body>
+</html>
